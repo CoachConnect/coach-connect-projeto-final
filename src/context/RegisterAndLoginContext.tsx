@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
@@ -47,6 +47,34 @@ const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
 
     const [user, setUser] = useState<User | null>(null)
 
+    useEffect(() => {
+        const id = localStorage.getItem("@id")
+        if(id){
+            const userLoad = async() => {               
+                const token = localStorage.getItem("@token")
+                try{
+                    const response = await api.get(`/users/${id}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    })
+
+                    setUser(response.data)
+                    if(response.data.isAdmin){
+                        navigate("/user/personal")
+                    }
+                    else{
+                        navigate("/user/dashboard")
+                    }
+                }
+                catch(error){
+                    console.error(error)
+                }
+            }
+            userLoad()
+        } 
+    }, [])
+
     const userRegister = async(dataRegister: IUserRegisterForm) => {
         try{
             await api.post<IUser>("/register", dataRegister)
@@ -61,20 +89,19 @@ const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
         try{
           const response = await api.post<IUser>("/login", dataLogin)
          
-
           if(response.data.user.isAdmin){
                 localStorage.setItem("@token", response.data.accessToken)
                 localStorage.setItem("@id", JSON.stringify(response.data.user.id))
                 setUser(response.data.user)
-                console.log("adminsim")
+                console.log(response.data.user)
                 navigate("/user/personal")
           }
           else{
-                localStorage.setItem("@tokenUser", response.data.accessToken)
-                localStorage.setItem("@idUser", JSON.stringify(response.data.user.id))
+                localStorage.setItem("@token", response.data.accessToken)
+                localStorage.setItem("@id", JSON.stringify(response.data.user.id))
                 setUser(response.data.user)
-                console.log("naoadmin")
                 navigate("/user/dashboard")
+                
             }
 
         }
@@ -82,7 +109,7 @@ const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
             console.error(error)
         }
     }
-
+    console.log(user)
     return(
         <RegisterAndLoginContext.Provider value={{
             user,

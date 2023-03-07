@@ -5,7 +5,7 @@ function App() {
 
   return (
    <> 
-      <RegisterAndLoginProvider >
+      <RegisterAndLoginProvider>
         <RoutesMain />
       </RegisterAndLoginProvider>    
    </>

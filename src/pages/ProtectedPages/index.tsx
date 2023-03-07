@@ -9,22 +9,21 @@ const ProtectedPages = () => {
 
     const { user } = useContext(RegisterAndLoginContext)
 
-    useEffect(() => {
-        if(user?.isAdmin){
 
+    useEffect(() => {
+        if(!user){    
+        navigate("/")
+       
         }
-        else if(!user?.isAdmin){
-            
+        else if(user.isAdmin){
+            navigate("/user/personal")
         }
-        else{
-            navigate("/")
+        else if(!user.isAdmin){
+            navigate("/user/dashboard")
         }
     }, [])
-    return(
-        <>
 
-        </>
-    )
+    return user ? <Outlet /> : null
 }
 
 export default ProtectedPages
