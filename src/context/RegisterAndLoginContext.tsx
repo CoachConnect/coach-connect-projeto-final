@@ -6,7 +6,7 @@ export interface IDefaultProviderProps{
     children: React.ReactNode   
 }
 export interface IUser {
-    acessToken: string,
+    accessToken: string,
     user: User
 }
 
@@ -38,7 +38,7 @@ interface IRegisterAndLoginContext{
 }
 
 
-const RegisterAndLoginContext = createContext({} as IRegisterAndLoginContext)
+export const RegisterAndLoginContext = createContext({} as IRegisterAndLoginContext)
 
 
 const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
@@ -60,16 +60,21 @@ const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
     const userLogin = async(dataLogin : IUserLoginForm) => {
         try{
           const response = await api.post<IUser>("/login", dataLogin)
+         
 
           if(response.data.user.isAdmin){
-                localStorage.setItem("@token", response.data.acessToken)
+                localStorage.setItem("@token", response.data.accessToken)
                 localStorage.setItem("@id", JSON.stringify(response.data.user.id))
                 setUser(response.data.user)
+                console.log("adminsim")
+                navigate("/user/personal")
           }
           else{
-                localStorage.setItem("@tokenUser", response.data.acessToken)
+                localStorage.setItem("@tokenUser", response.data.accessToken)
                 localStorage.setItem("@idUser", JSON.stringify(response.data.user.id))
                 setUser(response.data.user)
+                console.log("naoadmin")
+                navigate("/user/dashboard")
             }
 
         }
@@ -89,3 +94,5 @@ const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
         </RegisterAndLoginContext.Provider>
     )
 }
+
+export default RegisterAndLoginProvider

@@ -1,10 +1,13 @@
+import RegisterAndLoginProvider from './context/RegisterAndLoginContext'
 import RoutesMain from './routes/routes'
 
 function App() {
 
   return (
-   <>
-      <RoutesMain />
+   <> 
+      <RegisterAndLoginProvider >
+        <RoutesMain />
+      </RegisterAndLoginProvider>    
    </>
   )
 }

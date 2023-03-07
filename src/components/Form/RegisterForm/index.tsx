@@ -1,11 +1,14 @@
 import { useForm, SubmitHandler } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { IUserRegisterForm } from "../../../context/RegisterAndLoginContext"
+import { IUserRegisterForm, RegisterAndLoginContext } from "../../../context/RegisterAndLoginContext"
 import Input from "../Input"
 import { schemaRegister } from "../../../utils/schemas"
+import { useContext } from "react"
 
 
 const RegisterForm = () => {
+
+  const { userRegister } = useContext(RegisterAndLoginContext)
 
   const {register, handleSubmit, reset, formState: { errors }} = useForm<IUserRegisterForm>({
     mode: "onBlur",
@@ -14,8 +17,7 @@ const RegisterForm = () => {
 
   const submitRegister: SubmitHandler<IUserRegisterForm> = (data) => {
       const newDataRegister = {...data, isAdmin: false}
-      console.log(newDataRegister)
-  
+      userRegister(newDataRegister)
     reset()
   }
     return(

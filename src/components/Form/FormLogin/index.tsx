@@ -1,10 +1,13 @@
 import { SubmitHandler, useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { IUserLoginForm } from "../../../context/RegisterAndLoginContext"
+import { IUserLoginForm, RegisterAndLoginContext } from "../../../context/RegisterAndLoginContext"
 import Input from "../Input"
 import { schemaLogin } from "../../../utils/schemas"
+import { useContext } from "react"
 
 const FormLogin = () => {
+
+    const { userLogin } = useContext(RegisterAndLoginContext)
 
     const {register, handleSubmit, reset, formState: {errors }} = useForm<IUserLoginForm>({
         mode: "onBlur",
@@ -12,7 +15,7 @@ const FormLogin = () => {
     })
 
     const submitLogin: SubmitHandler<IUserLoginForm> = (data) => {
-        console.log(data)
+        userLogin(data)
         reset()
     }
     return(
