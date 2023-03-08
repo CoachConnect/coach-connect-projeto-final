@@ -9,11 +9,9 @@ const ProtectedPages = () => {
 
     const { user } = useContext(RegisterAndLoginContext)
 
-
     useEffect(() => {
         if(!user){    
-        navigate("/")
-       
+        navigate("/")      
         }
         else if(user.isAdmin){
             navigate("/user/personal")

@@ -5,6 +5,7 @@ import api from "../services/api";
 export interface IDefaultProviderProps{
     children: React.ReactNode   
 }
+
 export interface IUser {
     accessToken: string,
     user: User
@@ -37,9 +38,7 @@ interface IRegisterAndLoginContext{
     userLogin: (dataLogin: IUserLoginForm) => Promise<void>
 }
 
-
 export const RegisterAndLoginContext = createContext({} as IRegisterAndLoginContext)
-
 
 const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
 
@@ -93,15 +92,13 @@ const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
                 localStorage.setItem("@token", response.data.accessToken)
                 localStorage.setItem("@id", JSON.stringify(response.data.user.id))
                 setUser(response.data.user)
-                console.log(response.data.user)
                 navigate("/user/personal")
           }
           else{
                 localStorage.setItem("@token", response.data.accessToken)
                 localStorage.setItem("@id", JSON.stringify(response.data.user.id))
                 setUser(response.data.user)
-                navigate("/user/dashboard")
-                
+                navigate("/user/dashboard")                
             }
 
         }
@@ -109,7 +106,7 @@ const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
             console.error(error)
         }
     }
-    console.log(user)
+
     return(
         <RegisterAndLoginContext.Provider value={{
             user,
