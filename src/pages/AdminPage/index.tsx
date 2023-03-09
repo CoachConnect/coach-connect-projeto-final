@@ -1,10 +1,39 @@
 
-const AdminPage = () => {
+import { useContext } from "react";
+import { RegisterAndLoginContext } from "../../context/RegisterAndLoginContext";
+import { WorkoutForm } from "../../components/Form/workoutForm";
+import { WorkoutsList } from "../../components/workoutList";
+import { HeaderPage, MainPage, ProfileSection, FormSection } from "./style";
+import { AdminContext } from "../../context/AdminContext";
 
-    return(
-        <h1>Olá Admin!</h1>
-    )
-}
+export const AdminPage = () => {
+  const { user } = useContext(RegisterAndLoginContext);
+  const { logout } = useContext(AdminContext);
 
-export default AdminPage
+  return (
+    <MainPage>
+      <HeaderPage>
+        <nav>
+          <h1>CoachConnect</h1>
+          <button onClick={logout}>Sair</button>
+        </nav>
+      </HeaderPage>
+      <ProfileSection>
+        <span> Seja bem Vindo {user?.name}</span>
+        <span>{user?.email}</span>
+      </ProfileSection>
+      <div>
+        <FormSection>
+          <h3>Treinos</h3>
+        </FormSection>
+        <WorkoutForm />
+      </div>
+
+      <section>
+        <WorkoutsList />
+      </section>
+    </MainPage>
+  );
+};
+
 

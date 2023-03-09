@@ -9,16 +9,16 @@ import {
   IFormCreateWorkout,
   Workouts,
   workout,
-} from "../../context/AdminContext";
+} from "../../../context/AdminContext";
 import { TrainingSection } from "./style";
-import Input from "../Form/Input";
+import Input from "../Input";
 import { useEffect } from "react";
 
 interface IFormTrainingPros {
   register: UseFormRegister<IFormCreateWorkout>;
   control: Control<IFormCreateWorkout, any>;
 }
-const empty: workout = { name: "", set: "" , repeat: ""  };
+const empty: workout = { name: "", set: "", repeat: "" };
 
 export const Training = ({ register, control }: IFormTrainingPros) => {
   const { fields, append, prepend, remove, swap, move, insert, replace } =
