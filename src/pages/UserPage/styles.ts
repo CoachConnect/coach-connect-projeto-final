@@ -8,14 +8,14 @@ export const StyledUserPage = styled.div`
     }
 
     button {
-        background-color: var(--color-green-1);
+        background-color: var(--colorPrimary);
         padding: 0.5rem 2rem;
-        color: var(--color-green-2);
+        color: var(--colorGrey100);
         border-radius: 5px;
     }
     
     .div-green{
-        background-color: var(--color-green-1);
+        background-color: var(--colorPrimary);
         width: 100%;
         height: 120px;
     }
@@ -66,7 +66,7 @@ export const StyledUserPage = styled.div`
         border-radius: 100%;
         align-items: center;
         justify-content: center;
-        background-color: var(--color-green-1);
+        background-color: var(--colorPrimary);
         color: white;
     }
 
