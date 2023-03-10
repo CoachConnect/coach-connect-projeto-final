@@ -29,7 +29,12 @@ export const GlobalStyles = createGlobalStyle`
   button{
     cursor: pointer;
   }
-
+  .container {
+        max-width: 65rem;
+        margin: 0 auto;
+        width: 100%;
+        padding: 1rem;
+    }
 `
 
 

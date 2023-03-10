@@ -37,7 +37,8 @@ export interface IUserLoginForm{
 interface IRegisterAndLoginContext{
     user: User | null,
     userRegister: (dataRegister: IUserRegisterForm) => Promise<void>,
-    userLogin: (dataLogin: IUserLoginForm) => Promise<void>
+    userLogin: (dataLogin: IUserLoginForm) => Promise<void>,
+    userLogout:  () => void
 }
 
 export const RegisterAndLoginContext = createContext({} as IRegisterAndLoginContext)
@@ -47,6 +48,7 @@ const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
     const navigate = useNavigate()
 
     const [user, setUser] = useState<User | null>(null)
+    console.log(user)
 
     useEffect(() => {
         const id = localStorage.getItem("@id")
@@ -109,11 +111,19 @@ const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
         }
     }
 
+    const userLogout = () =>{
+
+        setUser(null)
+        localStorage.clear()
+        navigate('/')
+      }
+
     return(
         <RegisterAndLoginContext.Provider value={{
             user,
             userRegister,
             userLogin, 
+            userLogout
 
         }}>
             {children}
