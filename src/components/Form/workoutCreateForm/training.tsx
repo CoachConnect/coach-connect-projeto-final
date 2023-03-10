@@ -6,31 +6,35 @@ import {
   Control,
 } from "react-hook-form";
 import {
-  IFormCreateWorkout,
+  AdminContext,
+  IResponseWorkout,
   Workouts,
   workout,
 } from "../../../context/AdminContext";
 import { TrainingSection } from "./style";
 import Input from "../Input";
-import { useEffect } from "react";
+
 
 interface IFormTrainingPros {
-  register: UseFormRegister<IFormCreateWorkout>;
-  control: Control<IFormCreateWorkout, any>;
+  register: UseFormRegister<IResponseWorkout>;
+  control: Control<IResponseWorkout, any>;
 }
 const empty: workout = { name: "", set: "", repeat: "" };
 
 export const Training = ({ register, control }: IFormTrainingPros) => {
+  
   const { fields, append, prepend, remove, swap, move, insert, replace } =
-    useFieldArray<IFormCreateWorkout>({
+    useFieldArray<IResponseWorkout>({
       control,
       name: "workout",
     });
+    
   return (
     <TrainingSection>
       <button type="button" onClick={() => append({ ...empty })}>
         Adcionar exercício
       </button>
+     
       {fields.map((field, index) => (
         <div key={field.id}>
           <Input
@@ -48,6 +52,7 @@ export const Training = ({ register, control }: IFormTrainingPros) => {
             type="text"
             register={register(`workout.${index}.set`)}
           />
+        
         </div>
       ))}
     </TrainingSection>

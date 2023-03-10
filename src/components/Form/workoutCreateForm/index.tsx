@@ -1,12 +1,12 @@
 import { Training } from "./training";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { AdminContext, IFormCreateWorkout } from "../../../context/AdminContext";
+import { AdminContext, IResponseWorkout } from "../../../context/AdminContext";
 import { StyledForm } from "./style";
 import { useContext } from "react";
 import Input from "../Input";
 
 export const WorkoutForm = () => {
-  const submitWorkoutForm: SubmitHandler<IFormCreateWorkout> = (
+  const submitWorkoutForm: SubmitHandler<IResponseWorkout> = (
     dataWorkout
   ) => {
     createWorkout(dataWorkout);
@@ -14,7 +14,7 @@ export const WorkoutForm = () => {
   };
   const { createWorkout } = useContext(AdminContext);
   const { register, handleSubmit, reset, control } =
-    useForm<IFormCreateWorkout>();
+    useForm<IResponseWorkout>();
 
   return (
     <>

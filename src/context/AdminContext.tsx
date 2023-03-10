@@ -1,19 +1,19 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { IDefaultProviderProps } from "./RegisterAndLoginContext";
 import api from "../services/api";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const AdminContext = createContext({} as IAdminContext);
 
-export interface IFormCreateWorkout {
+export interface IResponseWorkout {
   workout_type: string;
   muscle_group: string;
   workout_time: string;
   workout: Workouts;
-  id?: number
+  id: number;
 }
 
-export type Workouts =  workout[];
+export type Workouts = workout[];
 
 export interface workout {
   name: string;
@@ -22,51 +22,120 @@ export interface workout {
 }
 
 interface IAdminContext {
-  createWorkout: (dataWorkout: IFormCreateWorkout) => Promise<void>;
+  createWorkout: (dataWorkout: IResponseWorkout) => Promise<void>;
   getAllWorkouts: () => Promise<void>;
   logout: () => void;
-  workoutList: Workouts;
-  training: workout | null;
-  workout: IFormCreateWorkout | null
+  workoutList: IResponseWorkout[];
+  trainings: IResponseWorkout[] | null;
+  workout: boolean;
+  setTrainings: React.Dispatch<React.SetStateAction<IResponseWorkout[] | null>>;
+  editWorkout: (
+    data: IResponseWorkout,
+    workoutId: number
+  ) => Promise<void>;
+  removeWorkout: (workoutId: number) => Promise<void>;
+  toggleModal: () => void;
+  setModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  modalEdit: boolean;
+  training: IResponseWorkout | undefined
+  setTraining: React.Dispatch<React.SetStateAction<IResponseWorkout | undefined>>
+ 
 }
 
 export const AdminProvider = ({ children }: IDefaultProviderProps) => {
-  const [training, setTraining] = useState<workout | null>(null);
-  const [workoutList, setWorkoutList] = useState<Workouts>([]);
-  const [workout, setWorkout] = useState<IFormCreateWorkout | null >(null)
-  const navigate = useNavigate() 
+  const [trainings, setTrainings] = useState<IResponseWorkout[] | null>(null);
+  const [workoutList, setWorkoutList] = useState<IResponseWorkout[]>([]);
+  const [workout, setWorkout] = useState(true);
+  const [modalEdit, setModalEdit] = useState(false);
+  const [training, setTraining] = useState<IResponseWorkout | undefined >(undefined);
+  const navigate = useNavigate();
 
-  const createWorkout = async (dataWorkout: IFormCreateWorkout) => {
-    try {
-      const response = await api.post("/workouts", dataWorkout);
-      setWorkoutList(response.data)
-      setWorkout(response.data)
-      
-     
-    } catch (error) {
-      console.log(error)
-    }
+  const toggleModal = () => {
+    setModalEdit((current) => !current);
   };
 
-  console.log(workoutList)
+  
+
+ 
 
   const getAllWorkouts = async () => {
     try {
       const response = await api.get("/workouts");
       setWorkoutList(response.data);
-    } catch (error) {}
+      setWorkout(false);
+      setTrainings(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  
+  useEffect(() => {
+    getAllWorkouts();
+  }, [workout]);
+
+  const createWorkout = async (dataWorkout: IResponseWorkout) => {
+    try {
+     await api.post("/workouts", dataWorkout);
+      setWorkout(true);
+      getAllWorkouts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const editWorkout = async (
+    data: IResponseWorkout,
+    workoutId: number
+  ) => {
+    try {
+      await api.patch(`workouts/${workoutId}`, data);
+      
+      
+    
+        
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+ 
+
+
+  const removeWorkout = async (workoutId: number) => {
+    try {
+      await api.delete(`workouts/${workoutId}`);
+      setWorkout(true)
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const logout = () => {
     localStorage.removeItem("@token");
-    navigate("/")
+    navigate("/");
   };
 
   return (
     <AdminContext.Provider
-      value={{ workoutList, workout, training, createWorkout, getAllWorkouts, logout,  }}
+      value={{
+        workoutList,
+        workout,
+        trainings,
+        createWorkout,
+        getAllWorkouts,
+       setTrainings,
+        logout,
+        editWorkout,
+        removeWorkout,
+        toggleModal,
+        setModalEdit,
+        modalEdit,
+        training,
+        setTraining,
+       
+      }}
     >
       {children}
     </AdminContext.Provider>

@@ -1,10 +1,10 @@
-
 import { useContext } from "react";
 import { RegisterAndLoginContext } from "../../context/RegisterAndLoginContext";
-import { WorkoutForm } from "../../components/Form/workoutForm";
-import { WorkoutsList } from "../../components/workoutList";
+import { WorkoutForm } from "../../components/Form/workoutCreateForm";
+import { WorkoutsList } from "../../components/WorkoutList";
 import { HeaderPage, MainPage, ProfileSection, FormSection } from "./style";
 import { AdminContext } from "../../context/AdminContext";
+import { WorkoutEditForm } from "../../components/Form/WorkoutEditForm";
 
 export const AdminPage = () => {
   const { user } = useContext(RegisterAndLoginContext);
@@ -19,8 +19,7 @@ export const AdminPage = () => {
         </nav>
       </HeaderPage>
       <ProfileSection>
-        <span> Seja bem Vindo {user?.name}</span>
-        <span>{user?.email}</span>
+        <span> Seja bem-vindo {user?.name}</span>
       </ProfileSection>
       <div>
         <FormSection>
@@ -31,6 +30,7 @@ export const AdminPage = () => {
 
       <section>
         <WorkoutsList />
+        <WorkoutEditForm/>
       </section>
     </MainPage>
   );
