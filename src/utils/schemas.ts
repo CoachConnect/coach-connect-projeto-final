@@ -22,7 +22,10 @@ export const schemaRegister = yup.object({
         "As senhas não correspondem"),
     monthlyPlan: yup 
     .string()
-    .required("Selecione seu plano")
+    .required("Selecione seu plano"),
+    photo: yup
+    .string()
+    .url("Este não é um formato válido")
 }).required()
 
 
