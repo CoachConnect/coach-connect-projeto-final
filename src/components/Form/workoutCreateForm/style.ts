@@ -11,6 +11,7 @@ fieldset{
     display: flex;
     flex-direction: column;
     gap: 10px
+    align-items: center;
 }
 
 label{
@@ -32,6 +33,7 @@ button{
     background-color: #046B0F;
     padding: 5px;
     font-size: 16px
+    
 }
 
 `
@@ -42,6 +44,13 @@ display: flex;
 flex-direction: column;
 gap: 10px;
 
+button{
+    background: var(--colorPrimary);
+    padding: 5px 15px;
+    border-radius: 8px;
+    color: var(--colorWhite)
+  
+}
 
 fieldset{
     display: flex;

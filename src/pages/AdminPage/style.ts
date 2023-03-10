@@ -32,11 +32,15 @@ button{
 
 export const ProfileSection = styled.section`
 
-img{
-    display: flex;
-    height: 200px;
-    border-radius: 80%
-  
+display: flex;
+flex-direction: column;
+align-items: center;
+
+span{
+    margin: 10px;
+    color: var(--colorPrimary);
+    font-weight: 600;
+
 }
 
 `
@@ -44,5 +48,11 @@ export const FormSection = styled.section`
 display: flex;
 flex-direction: column;
 align-items: center;
+
+h3{
+      margin: 10px;
+      color: var(--colorPrimary);
+    font-weight: 600;
+}
 
 `
