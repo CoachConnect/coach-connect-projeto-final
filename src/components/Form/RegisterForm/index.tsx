@@ -4,6 +4,9 @@ import { IUserRegisterForm, RegisterAndLoginContext } from "../../../context/Reg
 import Input from "../Input"
 import { schemaRegister } from "../../../utils/schemas"
 import { useContext } from "react"
+import InputRadio from "../InputRadio"
+import StyledFormRegister from "./registerForm"
+import { StyledButton } from "../../../styles/buttons"
 
 
 const RegisterForm = () => {
@@ -21,7 +24,7 @@ const RegisterForm = () => {
     reset()
   }
     return(
-      <form onSubmit={handleSubmit(submitRegister)}>
+      <StyledFormRegister onSubmit={handleSubmit(submitRegister)}>
         <Input 
           type="text"
           label="Nome"
@@ -29,6 +32,12 @@ const RegisterForm = () => {
           register={register("name")}
         />
 
+        <Input 
+          type="url"
+          label="Foto de Perfil"
+          error={errors.photo}
+          register={register("photo")}
+        />
         <Input 
           type="text"
           label="Email"
@@ -49,25 +58,27 @@ const RegisterForm = () => {
           error={errors.confirmPassword}
           register={register("confirmPassword")}
         />
+        <h3>Selecione um plano</h3>
 
-        <Input 
-          type="radio"
-          label="Plano Mensal"
-          error={errors.monthlyPlan}
-          register={register("monthlyPlan")}
-          value="Plano Mensal" 
-        />
+        <div className="contentPlan">          
+            <InputRadio 
+              type="radio"
+              label="Plano Mensal R$ 89,90 no crédito ou pix"
+              error={errors.monthlyPlan}
+              register={register("monthlyPlan")}
+              value="Plano Mensal" 
+            />
 
-
-        <Input 
-          type="radio"
-          label="Plano Semestral"
-          error={errors.monthlyPlan}
-          register={register("monthlyPlan")}
-          value="Plano Semestral" 
-        />
-        <button type="submit">Cadastrar</button>
-      </form>
+            <InputRadio 
+              type="radio"
+              label="Plano Semestral 6x R$ 76,50 no crédito ou pix"
+              error={errors.monthlyPlan}
+              register={register("monthlyPlan")}
+              value="Plano Semestral" 
+            />
+        </div>
+        <StyledButton type="submit">Cadastrar</StyledButton>
+      </StyledFormRegister>
     )
 }
 export default RegisterForm

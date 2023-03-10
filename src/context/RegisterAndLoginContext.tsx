@@ -15,7 +15,8 @@ export interface User{
     id: number,
     email: string,
     name: string,
-    isAdmin: boolean
+    isAdmin: boolean,
+    photo?: string
 }
 
 export interface IUserRegisterForm{
@@ -24,7 +25,8 @@ export interface IUserRegisterForm{
     name: string,
     confirmPassword?: string,  
     monthlyPlan?: string
-    isAdmin?: boolean
+    isAdmin?: boolean,
+    photo?: string | undefined
 }
 
 export interface IUserLoginForm{

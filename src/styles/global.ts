@@ -2,6 +2,16 @@ import { createGlobalStyle } from 'styled-components';
 
 
 export const GlobalStyles = createGlobalStyle`
+
+  :root{
+    --colorPrimary:  #046B0F;
+    --colorGrey200:  #BDBDBD;
+    --colorGrey150: #E0E0E0;
+    --colorGrey100:  #EDF8E5;    
+    --colorWhite: #ffffff;
+    --colorError: #e60000;
+  }
+
   *{
     box-sizing: border-box;
     margin: 0;
@@ -9,14 +19,20 @@ export const GlobalStyles = createGlobalStyle`
     border: none;
     list-style: none;
     text-decoration: none;
-
- 
+    font-family: 'Inter', sans-serif;
   }
 
-button{
+  body{
+    background-color: var(--colorGrey100);
+  }
+
+  button{
     cursor: pointer;
   }
+
 `
+
+
 
 
 

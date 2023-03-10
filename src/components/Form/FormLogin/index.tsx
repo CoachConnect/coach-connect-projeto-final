@@ -4,6 +4,8 @@ import { IUserLoginForm, RegisterAndLoginContext } from "../../../context/Regist
 import Input from "../Input"
 import { schemaLogin } from "../../../utils/schemas"
 import { useContext } from "react"
+import StyledFormLogin from "./formLogin"
+import { StyledButton } from "../../../styles/buttons"
 
 const FormLogin = () => {
 
@@ -19,23 +21,25 @@ const FormLogin = () => {
         reset()
     }
     return(
-        <form onSubmit={handleSubmit(submitLogin)}>
-            <Input 
-                type="text"
-                label="Email"
-                error={errors.email}
-                register={register("email")}
-            />
+        <StyledFormLogin onSubmit={handleSubmit(submitLogin)}>
+           <div className="contentInputs">
+                <Input 
+                    type="text"
+                    label="Email"
+                    error={errors.email}
+                    register={register("email")}
+                />
 
-            <Input           
-                type="password"
-                label="Senha"
-                error={errors.password}
-                register={register("password")}
-            />
+                <Input           
+                    type="password"
+                    label="Senha"
+                    error={errors.password}
+                    register={register("password")}
+                />
+           </div>
 
-            <button type="submit">Entrar</button>
-        </form>
+            <StyledButton type="submit">Entrar</StyledButton>
+        </StyledFormLogin>
     )
 }
 
