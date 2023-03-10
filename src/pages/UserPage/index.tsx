@@ -7,8 +7,6 @@ const UserPage = () => {
 
     const {user, userLogout} = useContext(RegisterAndLoginContext)
 
-
-
     return(
         <StyledUserPage>
             <header className="container">
