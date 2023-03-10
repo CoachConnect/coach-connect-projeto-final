@@ -34,7 +34,6 @@ export const ProfileSection = styled.section`
 
 img{
     display: flex;
-    weight: 200px;
     height: 200px;
     border-radius: 80%
   
