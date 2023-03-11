@@ -1,15 +1,28 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
+import { AdminContext } from "../../context/AdminContext"
 import { RegisterAndLoginContext } from "../../context/RegisterAndLoginContext"
+
+import { StyledTrainingModal, StyledUserPage } from "./styles"
+
 import { StyledUserPage } from "./styles"
 import { UserContext } from "../../context/UserContext"
 import { EditProfileForm } from "../../components/Form/EditProfileForm"
 
 
+
 const UserPage = () => {
 
     const {user, userLogout} = useContext(RegisterAndLoginContext)
+
+    const [ openModal, setOpenModal] = useState(false)
+    const { training, trainings} = useContext(AdminContext)
+    
+    console.log(training)
+    console.log(trainings)
+
     const {newUser} = useContext(UserContext)
     const {setEditProfile} = useContext(UserContext)
+
 
     return(
         <StyledUserPage>
@@ -31,7 +44,7 @@ const UserPage = () => {
                     <EditProfileForm/>
                 </section>
                 <ul>
-                    <li>
+                    <li onClick={() => setOpenModal(true)}>
                         <div className="div-circle">A</div>
                         <p>Treino A</p>
                         <p>Grupo muscular:Costas e biceps</p>
@@ -54,7 +67,26 @@ const UserPage = () => {
                    
                 </ul>
              
+
             </main>
+            {openModal && 
+                <StyledTrainingModal >
+                    <div>
+                    <header>
+                        <h1>Treino</h1>
+                        <button onClick={() => setOpenModal(false)}>X</button>
+                    </header>
+                    <main>
+                        <div> 
+                            <h1>A</h1> 
+                            <h3>Treino A</h3>
+                        </div>
+                        <section>
+
+                        </section>
+                    </main>
+                    </div>
+                </StyledTrainingModal>}
         </StyledUserPage>
     )
 }

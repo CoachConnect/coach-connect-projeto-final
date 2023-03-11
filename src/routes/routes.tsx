@@ -15,28 +15,36 @@ const RoutesMain = () => {
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/register" element={<Register />} />
 
-      <Route path="/user/personal" element={<ProtectedPages />}>
-        <Route
-          index
-          element={
-            <AdminProvider>
-              <AdminPage />
-            </AdminProvider>
-          }
-        />
-      </Route>
-      <Route path="/user/dashboard" element={<ProtectedPages />}>
-        <Route
-          index
-          element={
-            <UserProvider>
-              <UserPage />
-            </UserProvider>
-          }
-        />
-      </Route>
-    </Routes>
-  );
-};
+
+    return(
+        <Routes>
+            <Route path="/" element={ <Home />}/>
+            <Route path="/aboutUs" element={ <AboutUs />}/>
+            <Route path="/register" element={ <Register />} />
+
+            <Route path="/user/personal" element={ <ProtectedPages />} >
+                <Route index element={ 
+                <AdminProvider>
+                    <AdminPage />
+                 </AdminProvider>
+                }/>               
+            </Route>
+            <Route path="/user/dashboard" element={ <ProtectedPages />}>
+                
+                <Route
+                  index
+                  element={
+                    <AdminProvider>
+                      <AdminPage />
+                    </AdminProvider>}                        
+                   />
+            </Route>
+        </Routes>
+    )
+}
+
+     
+
+
 
 export default RoutesMain;

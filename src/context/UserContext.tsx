@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useEffect, useState } from "react";
 import {
   IDefaultProviderProps,
@@ -67,3 +68,4 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     </UserContext.Provider>
   );
 };
+

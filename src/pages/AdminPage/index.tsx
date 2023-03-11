@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { RegisterAndLoginContext } from "../../context/RegisterAndLoginContext";
 import { WorkoutForm } from "../../components/Form/workoutCreateForm";
-import { WorkoutsList } from "../../components/WorkoutList";
+import { WorkoutsList } from "../../components/workoutList";
 import { HeaderPage, MainPage, ProfileSection, FormSection } from "./style";
 import { AdminContext } from "../../context/AdminContext";
 import { WorkoutEditForm } from "../../components/Form/WorkoutEditForm";
@@ -26,6 +26,7 @@ export const AdminPage = () => {
           <h3>Treinos</h3>
         </FormSection>
         <WorkoutForm />
+        
       </div>
 
       <section>
