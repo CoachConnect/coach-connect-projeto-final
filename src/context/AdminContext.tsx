@@ -29,17 +29,15 @@ interface IAdminContext {
   trainings: IResponseWorkout[] | null;
   workout: boolean;
   setTrainings: React.Dispatch<React.SetStateAction<IResponseWorkout[] | null>>;
-  editWorkout: (
-    data: IResponseWorkout,
-    workoutId: number
-  ) => Promise<void>;
+  editWorkout: (data: IResponseWorkout, workoutId: number) => Promise<void>;
   removeWorkout: (workoutId: number) => Promise<void>;
   toggleModal: () => void;
   setModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
   modalEdit: boolean;
-  training: IResponseWorkout | undefined
-  setTraining: React.Dispatch<React.SetStateAction<IResponseWorkout | undefined>>
- 
+  training: IResponseWorkout | undefined;
+  setTraining: React.Dispatch<
+    React.SetStateAction<IResponseWorkout | undefined>
+  >;
 }
 
 export const AdminProvider = ({ children }: IDefaultProviderProps) => {
@@ -47,16 +45,14 @@ export const AdminProvider = ({ children }: IDefaultProviderProps) => {
   const [workoutList, setWorkoutList] = useState<IResponseWorkout[]>([]);
   const [workout, setWorkout] = useState(true);
   const [modalEdit, setModalEdit] = useState(false);
-  const [training, setTraining] = useState<IResponseWorkout | undefined >(undefined);
+  const [training, setTraining] = useState<IResponseWorkout | undefined>(
+    undefined
+  );
   const navigate = useNavigate();
 
   const toggleModal = () => {
     setModalEdit((current) => !current);
   };
-
-  
-
- 
 
   const getAllWorkouts = async () => {
     try {
@@ -76,7 +72,7 @@ export const AdminProvider = ({ children }: IDefaultProviderProps) => {
 
   const createWorkout = async (dataWorkout: IResponseWorkout) => {
     try {
-     await api.post("/workouts", dataWorkout);
+      await api.post("/workouts", dataWorkout);
       setWorkout(true);
       getAllWorkouts();
     } catch (error) {
@@ -84,29 +80,18 @@ export const AdminProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
-  const editWorkout = async (
-    data: IResponseWorkout,
-    workoutId: number
-  ) => {
+  const editWorkout = async (data: IResponseWorkout, workoutId: number | undefined) => {
     try {
       await api.patch(`workouts/${workoutId}`, data);
-      
-      
-    
-        
-      
     } catch (error) {
       console.log(error);
     }
   };
 
- 
-
-
   const removeWorkout = async (workoutId: number) => {
     try {
       await api.delete(`workouts/${workoutId}`);
-      setWorkout(true)
+      setWorkout(true);
     } catch (error) {
       console.log(error);
     }
@@ -125,7 +110,7 @@ export const AdminProvider = ({ children }: IDefaultProviderProps) => {
         trainings,
         createWorkout,
         getAllWorkouts,
-       setTrainings,
+        setTrainings,
         logout,
         editWorkout,
         removeWorkout,
@@ -134,7 +119,6 @@ export const AdminProvider = ({ children }: IDefaultProviderProps) => {
         modalEdit,
         training,
         setTraining,
-       
       }}
     >
       {children}

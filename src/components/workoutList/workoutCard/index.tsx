@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { AdminContext, IResponseWorkout } from "../../../context/AdminContext";
+import { AdminContext } from "../../../context/AdminContext";
 import { WorkoutItem } from "./style";
 
 export const WorkoutCard = () => {
