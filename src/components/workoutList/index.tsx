@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AdminContext } from "../../context/AdminContext";
 import { WorkoutList } from "./style";
 
-import { WorkoutCard }  from "./workoutCard";
+import { WorkoutCard }  from "./WorkoutCard";
 
 
 
