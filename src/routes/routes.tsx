@@ -24,6 +24,7 @@ const RoutesMain = () => {
                 }/>               
             </Route>
             <Route path="/user/dashboard" element={ <ProtectedPages />}>
+                
                 <Route index element={ <UserPage />}/>
             </Route>
         </Routes>

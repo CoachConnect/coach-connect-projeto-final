@@ -71,3 +71,21 @@ export const StyledUserPage = styled.div`
     }
 
 `
+    export const StyledTrainingModal = styled.div`
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 100%;
+        height: 100vh;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        div{
+            background-color: var(--colorGrey100)
+
+        }
+    `

@@ -10,7 +10,7 @@ import StyledImage from './carrossel'
 const SectionCarousel = () => {
 
     return(
-        <Carousel autoPlay={true} infiniteLoop={true} interval={2500} showArrows={false}>
+        <Carousel autoPlay={true} infiniteLoop={true} interval={2500} showArrows={false} showThumbs={false}>
             <div>
                 <StyledImage src={photo1} alt="" />
             </div>

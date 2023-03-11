@@ -39,7 +39,6 @@ interface IAdminContext {
   modalEdit: boolean;
   training: IResponseWorkout | undefined
   setTraining: React.Dispatch<React.SetStateAction<IResponseWorkout | undefined>>
- 
 }
 
 export const AdminProvider = ({ children }: IDefaultProviderProps) => {
@@ -55,9 +54,6 @@ export const AdminProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   
-
- 
-
   const getAllWorkouts = async () => {
     try {
       const response = await api.get("/workouts");
@@ -100,7 +96,8 @@ export const AdminProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
- 
+  console.log(trainings)
+  console.log(training)
 
 
   const removeWorkout = async (workoutId: number) => {

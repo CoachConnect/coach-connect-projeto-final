@@ -48,7 +48,7 @@ const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
     const navigate = useNavigate()
 
     const [user, setUser] = useState<User | null>(null)
-    console.log(user)
+    
 
     useEffect(() => {
         const id = localStorage.getItem("@id")
