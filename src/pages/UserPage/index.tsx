@@ -9,8 +9,7 @@ const UserPage = () => {
     const {user, userLogout} = useContext(RegisterAndLoginContext)
     const [ openModal, setOpenModal] = useState(false)
     const { training, trainings} = useContext(AdminContext)
-    const { getAllWorkouts} = useContext(AdminContext)
-    getAllWorkouts()
+    
     console.log(training)
     console.log(trainings)
     return(
