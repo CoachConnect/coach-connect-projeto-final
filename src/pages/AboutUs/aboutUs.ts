@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledMainHomePage = styled.main`
+const StyledMainAboutUs = styled.main`
     width: 95%;
     margin: 0 auto;
     display: flex;
@@ -8,23 +8,16 @@ const StyledMainHomePage = styled.main`
     justify-content: center;
     align-items: center;
     min-height: 50vh;
-
-    h2{
-        color: var(--colorPrimary);
-        text-align: center;
-        padding: 0 .25rem 1rem;
-    }
-
-    .btnRegister{
-        width: 6.25rem;
-        margin: 0 auto;
+   
+    .images{
         display: flex;
-        justify-content:center;
-
     }
 
     img{
-        object-fit: contain;
+        object-fit: cover;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
     }
 
     @media(min-width: 700px){
@@ -33,4 +26,5 @@ const StyledMainHomePage = styled.main`
     }
 
 `
-export default StyledMainHomePage
+
+export default StyledMainAboutUs

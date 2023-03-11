@@ -10,6 +10,7 @@ export const WorkoutForm = () => {
     dataWorkout
   ) => {
     createWorkout(dataWorkout);
+    console.log(dataWorkout.workout)
     reset();
   };
   const { createWorkout } = useContext(AdminContext);
