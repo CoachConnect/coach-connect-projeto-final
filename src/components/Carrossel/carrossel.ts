@@ -1,10 +1,31 @@
 import styled from "styled-components";
 
 const StyledImage = styled.img`
-    object-fit: cover;
+    object-fit: contain;
     max-height: 350px;
-    max-width: 750px;
+    max-width: 850px;
 `
 
-export default StyledImage
+const StyledDiv = styled.div`
+   
+    img{
+        position: relative;
+        object-fit: contain;
+        max-height: 350px;
+        max-width: 850px;     
+    }
+
+    p{
+        position: absolute;
+        width: 180px;
+        top: calc(100% / 4.5);
+        left: calc(100% / 3.7);
+        color: var(--colorWhite);
+        font-weight: bold;
+        letter-spacing: 3px;
+    }
+
+`
+
+export { StyledDiv, StyledImage }
 
