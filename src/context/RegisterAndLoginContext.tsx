@@ -44,11 +44,9 @@ interface IRegisterAndLoginContext{
 export const RegisterAndLoginContext = createContext({} as IRegisterAndLoginContext)
 
 const RegisterAndLoginProvider = ({children}: IDefaultProviderProps) => {
-
     const navigate = useNavigate()
-
-    const [user, setUser] = useState<User | null>(null)
     
+    const [user, setUser] = useState<User | null>(null)
 
     useEffect(() => {
         const id = localStorage.getItem("@id")

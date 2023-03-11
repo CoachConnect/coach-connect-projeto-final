@@ -1,14 +1,20 @@
-import { Routes, Route } from "react-router-dom"
-import { AdminPage } from "../pages/AdminPage"
-import Home from "../pages/Home"
-import ProtectedPages from "../pages/ProtectedPages"
-import Register from "../pages/RegisterPage"
+import { Routes, Route } from "react-router-dom";
+import { AdminPage } from "../pages/AdminPage";
+import Home from "../pages/Home";
+import ProtectedPages from "../pages/ProtectedPages";
+import Register from "../pages/RegisterPage";
 import { AdminProvider } from "../context/AdminContext";
-import UserPage from "../pages/UserPage"
-import AboutUs from "../pages/AboutUs"
-
+import UserPage from "../pages/UserPage";
+import AboutUs from "../pages/AboutUs";
+import { UserContext, UserProvider } from "../context/UserContext";
 
 const RoutesMain = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/aboutUs" element={<AboutUs />} />
+      <Route path="/register" element={<Register />} />
+
 
     return(
         <Routes>
@@ -25,10 +31,20 @@ const RoutesMain = () => {
             </Route>
             <Route path="/user/dashboard" element={ <ProtectedPages />}>
                 
-                <Route index element={ <UserPage />}/>
+                <Route
+                  index
+                  element={
+                    <AdminProvider>
+                      <AdminPage />
+                    </AdminProvider>}                        
+                   />
             </Route>
         </Routes>
     )
 }
 
-export default RoutesMain 
+     
+
+
+
+export default RoutesMain;

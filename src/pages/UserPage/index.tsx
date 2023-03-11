@@ -1,17 +1,29 @@
 import { useContext, useState } from "react"
 import { AdminContext } from "../../context/AdminContext"
 import { RegisterAndLoginContext } from "../../context/RegisterAndLoginContext"
+
 import { StyledTrainingModal, StyledUserPage } from "./styles"
+
+import { StyledUserPage } from "./styles"
+import { UserContext } from "../../context/UserContext"
+import { EditProfileForm } from "../../components/Form/EditProfileForm"
+
 
 
 const UserPage = () => {
 
     const {user, userLogout} = useContext(RegisterAndLoginContext)
+
     const [ openModal, setOpenModal] = useState(false)
     const { training, trainings} = useContext(AdminContext)
     
     console.log(training)
     console.log(trainings)
+
+    const {newUser} = useContext(UserContext)
+    const {setEditProfile} = useContext(UserContext)
+
+
     return(
         <StyledUserPage>
             <header className="container">
@@ -23,10 +35,14 @@ const UserPage = () => {
                 <div className="div-user">
                     <div className="div-user-info">
                         <div className="div-img"><img/></div>
-                        <p>{user?.name}</p>
-                        <p>{user?.email}</p>
+                        <p>{newUser?.name}</p>
+                        <p>{newUser?.email}</p>
                     </div>
                 </div>
+                <section>
+                    <button onClick={() => setEditProfile(true) } >Alterar Perfil</button>
+                    <EditProfileForm/>
+                </section>
                 <ul>
                     <li onClick={() => setOpenModal(true)}>
                         <div className="div-circle">A</div>

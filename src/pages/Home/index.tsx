@@ -4,6 +4,7 @@ import FormLogin from "../../components/Form/FormLogin"
 import StyledMainHomePage from "./home"
 import { StyledButtonLink } from "../../styles/buttons"
 import SectionCarousel from "../../components/Carrossel"
+import Footer from "../../components/Footer"
 
 
 const Home = () => {
@@ -14,8 +15,9 @@ const Home = () => {
             <StyledMainHomePage>              
                 <h2>Conectamos você com o seu personal trainer!</h2>     
                 <SectionCarousel />
-                <StyledButtonLink className="btnRegister" to="/register">Cadastrar</StyledButtonLink>           
+                           
             </StyledMainHomePage>
+            <Footer/>
         </>
     )
 }

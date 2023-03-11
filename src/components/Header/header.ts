@@ -85,7 +85,7 @@ const StyledHeader = styled.header`
         
     }
 
-    @media(min-width: 950px){
+    @media(min-width: 1100px){
         .containerLoginForm{
             display: flex;
             opacity: 1;
