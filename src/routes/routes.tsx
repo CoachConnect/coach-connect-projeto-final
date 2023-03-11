@@ -9,13 +9,7 @@ import AboutUs from "../pages/AboutUs";
 import { UserContext, UserProvider } from "../context/UserContext";
 
 const RoutesMain = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/aboutUs" element={<AboutUs />} />
-      <Route path="/register" element={<Register />} />
-
-
+ 
     return(
         <Routes>
             <Route path="/" element={ <Home />}/>
