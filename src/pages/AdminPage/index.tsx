@@ -26,6 +26,7 @@ export const AdminPage = () => {
           <h3>Treinos</h3>
         </FormSection>
         <WorkoutForm />
+        
       </div>
 
       <section>
