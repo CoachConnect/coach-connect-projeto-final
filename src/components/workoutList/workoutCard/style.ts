@@ -7,7 +7,8 @@ export const WorkoutItem = styled.li`
   height: 40px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 1rem;
 
   h3 {
     background: var( --colorPrimary);
@@ -22,6 +23,18 @@ export const WorkoutItem = styled.li`
     align-items: center;
   }
 
+  .contentWorkout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 3.5rem;
+    max-width: 9.375rem;
+  }
+
+  .quantities{
+    font-weight: bold;
+  }
+  
   span,
   button {
     color: var( --colorPrimary);

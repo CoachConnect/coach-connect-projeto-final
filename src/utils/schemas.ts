@@ -38,3 +38,30 @@ export const schemaLogin = yup.object({
     .string()
     .required("Senha inválida")
 }).required()
+
+
+export const schemaRegisterNewWorkout = yup.object({
+    workout_type: yup 
+    .string()
+    .required("Inserir tipo de treino")
+    .max(60, "O tipo de treino não precisa ser uma bíblia")
+    .min(1, "Uma letra no mínimo"),
+    muscle_group: yup
+    .string()
+    .required("Grupo que pertence o treino")
+    .min(3, "Mínimo 3 letras")
+    .max(60, "Seu nome já ta grandinho parça, não tem músculo com tudo isso não, releva"),
+    workout: yup
+    .string()
+    .required("Nome do exercício obrigatório")
+    .min(3, "Mínimo 3 letras")
+    .max(60, "Seu nome já ta grandinho parça, não tem exercício com tudo isso não, releva"),
+    series: yup 
+    .string()
+    .required("Número de séries obrigatório"),
+    repetitions: yup
+    .string()
+    .required("Repetições obrigatória"),
+    charge: yup
+    .string()   
+}).required()
