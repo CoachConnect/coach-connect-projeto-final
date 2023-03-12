@@ -7,8 +7,9 @@ const StyledFooter = styled.footer`
     justify-content:center;
     align-items: center;
     height: 3rem;
-    position: absolute;
     bottom: 0;
+    position: fixed;
+    background-color: var(--colorGrey150);
 
     p{
         color: var(--colorPrimary);
