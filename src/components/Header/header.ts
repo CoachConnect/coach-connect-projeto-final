@@ -4,6 +4,9 @@ const StyledHeader = styled.header`
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.25);
     margin-bottom: 1.25rem;
+    position: fixed;
+    background-color:var(--colorGrey100);
+    z-index: 1;
 
     .containerHeader{
         width: 100%;
