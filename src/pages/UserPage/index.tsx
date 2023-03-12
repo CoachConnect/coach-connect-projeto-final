@@ -4,7 +4,6 @@ import { RegisterAndLoginContext } from "../../context/RegisterAndLoginContext"
 
 import { StyledTrainingModal, StyledUserPage } from "./styles"
 
-import { StyledUserPage } from "./styles"
 import { UserContext } from "../../context/UserContext"
 import { EditProfileForm } from "../../components/Form/EditProfileForm"
 

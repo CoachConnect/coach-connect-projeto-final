@@ -28,9 +28,9 @@ const RoutesMain = () => {
                 <Route
                   index
                   element={
-                    <AdminProvider>
-                      <AdminPage />
-                    </AdminProvider>}                        
+                    <UserProvider>
+                      <UserPage />
+                    </UserProvider>}                        
                    />
             </Route>
         </Routes>
