@@ -8,6 +8,8 @@ const StyledMainHomePage = styled.main`
     justify-content: center;
     align-items: center;
     min-height: 50vh;
+    position: relative;
+    top: 5.9375rem;
 
     h2{
         color: var(--colorPrimary);
@@ -30,6 +32,11 @@ const StyledMainHomePage = styled.main`
     @media(min-width: 700px){
         max-width: 80%;
         margin: 0 auto;
+    }
+
+    @media(min-width: 1090px){
+        position: relative;
+        top: 8.75rem;
     }
 
 `

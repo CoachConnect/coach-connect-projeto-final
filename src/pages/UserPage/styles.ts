@@ -48,7 +48,7 @@ export const StyledUserPage = styled.div`
         margin-top: 5rem;
         display: flex;
         flex-wrap:wrap;
-        justify-content: space-between;
+        gap: 5rem;
     }
 
     li{
@@ -57,6 +57,7 @@ export const StyledUserPage = styled.div`
         align-items: center;
         gap: 0.5rem;
         margin-bottom: 2rem;
+        cursor: pointer;
     }
 
     .div-circle{
@@ -70,4 +71,49 @@ export const StyledUserPage = styled.div`
         color: white;
     }
 
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+
+
+    @media(max-width: 769px){
+
+        ul{
+            margin-top: 1rem;
+            flex-wrap: unset;
+            overflow-x: auto;
+            gap: 4rem;
+        }
+
+        .div-circle{
+            width: 30px;
+            height: 30px;
+        }
+    }
+
 `
+    export const StyledTrainingModal = styled.div`
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 100%;
+        height: 100vh;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        div{
+            background-color: var(--colorGrey100);
+            padding: 2rem;
+        }
+
+        span{
+            color: var(--colorPrimary);
+        }
+
+    `

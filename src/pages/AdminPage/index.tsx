@@ -24,16 +24,12 @@ export const AdminPage = () => {
       <div>
         <FormSection>
           <h3>Treinos</h3>
+          <WorkoutForm />
+          <WorkoutEditForm />
+          <WorkoutsList />
         </FormSection>
-        <WorkoutForm />
+        
       </div>
-
-      <section>
-        <WorkoutsList />
-        <WorkoutEditForm/>
-      </section>
     </MainPage>
   );
 };
-
-

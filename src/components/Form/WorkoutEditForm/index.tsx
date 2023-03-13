@@ -2,23 +2,23 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Input from "../Input";
 import { useContext, useEffect } from "react";
 import { AdminContext, IResponseWorkout } from "../../../context/AdminContext";
-import { Training } from "../workoutCreateForm/training";
 import { EditForm, ModalEditForm } from "./style";
 
+export type IUpdateWorkout = Omit<
+  IResponseWorkout,
+  "workout_type" | "muscle_group" | "workout" | "id"
+>;
+
 export const WorkoutEditForm = () => {
-  const { register, handleSubmit, reset, control } =
-    useForm<IResponseWorkout>();
+  const { register, handleSubmit, reset } = useForm<IUpdateWorkout>();
   const { editWorkout, removeWorkout, modalEdit, training, setModalEdit } =
     useContext(AdminContext);
 
-  const submitEditForm: SubmitHandler<IResponseWorkout> = (data) => {
+  const submitEditForm: SubmitHandler<IUpdateWorkout> = (data) => {
     if (!training) return;
     editWorkout(data, training.id);
     reset();
-  
   };
-
-
 
   const remove = () => {
     if (!training) return;
@@ -39,17 +39,21 @@ export const WorkoutEditForm = () => {
 
             <EditForm onSubmit={handleSubmit(submitEditForm)}>
               <Input
-                label="Tempo de treino"
+                label="Repetições"
                 type="text"
-                register={register("workout_time")}
+                register={register("repetitions")}
               />
-              <Training register={register} control={control} />
+              <Input label="Séries" type="text" register={register("series")} />
+              <Input label="Carga" type="text" register={register("charge")} />
+
               <div className="button-div">
                 <button type="submit">Editar</button>
                 <button
                   className="button-modal"
                   type="button"
-                  onClick={() =>{ remove() , setModalEdit(false) }}
+                  onClick={() => {
+                    remove(), setModalEdit(false);
+                  }}
                 >
                   Remover
                 </button>

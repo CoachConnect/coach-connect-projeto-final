@@ -3,11 +3,13 @@ import styled from "styled-components";
 export const WorkoutItem = styled.li`
   background: #ffff;
   border-radius: 8px;
-  width: 80%;
-  height: 40px;
+  width: 90%;
+  height: 60px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 1rem;
+
 
   h3 {
     background: var( --colorPrimary);
@@ -22,6 +24,20 @@ export const WorkoutItem = styled.li`
     align-items: center;
   }
 
+  .contentWorkout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 3.7rem;
+    max-width: 9.375rem;
+    
+  }
+
+  .quantities{
+    font-weight: bold;
+    
+  }
+  
   span,
   button {
     color: var( --colorPrimary);
@@ -30,5 +46,6 @@ export const WorkoutItem = styled.li`
   button {
     background: none;
     font-size: 20px;
+    margin: 5px;
   }
 `;

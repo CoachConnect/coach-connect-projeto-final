@@ -11,8 +11,10 @@ import { StyledDiv, StyledImage } from './carrossel'
 const SectionCarousel = () => {
 
     return(
+    
         <Carousel autoPlay={true} infiniteLoop={true} interval={2500} showArrows={false} showThumbs={false} > 
             <StyledDiv>
+
                 <StyledImage src={photo1} alt="" />
                 <p>Um corpo bem desenvolvido, é uma mente desenvolvida!</p>
             </StyledDiv>

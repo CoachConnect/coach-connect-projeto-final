@@ -10,6 +10,7 @@ import photo6 from "../../assets/photo6.jpg"
 import photo7 from "../../assets/photo7.jpg"
 import photo9 from "../../assets/photo9.jpg"
 import StyledMainAboutUs from "./aboutUs"
+import { StyledButtonLink } from "../../styles/buttons"
 
 const AboutUs = () => {
 
@@ -17,7 +18,7 @@ const AboutUs = () => {
         <>
             <Header route="/" text="Home" />
             <StyledMainAboutUs>
-                <section>
+                <section className="sectionSlogan">
                     <p>Conectamos você com o seu personal trainer, para que você tenha na palma da sua mão um guia de exercícios incríveis, possibilitando:</p>
                 </section>
 
@@ -36,6 +37,7 @@ const AboutUs = () => {
                     </figure>
                 </section>
             </StyledMainAboutUs>
+            
             <Footer />
         </>
     )
