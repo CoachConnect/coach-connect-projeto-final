@@ -4,6 +4,9 @@ export const MainPage = styled.div`
 background-color:#EDF8E5;
 font-family: 'Inter', sans-serif;
 height: 100vh;
+
+
+
 `
 
 export const HeaderPage = styled.header`
@@ -48,6 +51,7 @@ export const FormSection = styled.section`
 display: flex;
 flex-direction: column;
 align-items: center;
+justify-content: center;
 
 h3{
       margin: 10px;

@@ -4,11 +4,13 @@ import { useContext, useEffect } from "react";
 import { AdminContext, IResponseWorkout } from "../../../context/AdminContext";
 import { EditForm, ModalEditForm } from "./style";
 
-export type IUpdateWorkout = Omit<IResponseWorkout, "workout_type" | "muscle_group" | "workout" | "id">
+export type IUpdateWorkout = Omit<
+  IResponseWorkout,
+  "workout_type" | "muscle_group" | "workout" | "id"
+>;
 
 export const WorkoutEditForm = () => {
-  const { register, handleSubmit, reset } =
-    useForm<IUpdateWorkout>();
+  const { register, handleSubmit, reset } = useForm<IUpdateWorkout>();
   const { editWorkout, removeWorkout, modalEdit, training, setModalEdit } =
     useContext(AdminContext);
 
@@ -16,7 +18,6 @@ export const WorkoutEditForm = () => {
     if (!training) return;
     editWorkout(data, training.id);
     reset();
-  
   };
 
   const remove = () => {
@@ -42,23 +43,17 @@ export const WorkoutEditForm = () => {
                 type="text"
                 register={register("repetitions")}
               />
-              <Input
-                label="Séries"
-                type="text"
-                register={register("series")}
-              />
-              <Input
-                label="Carga"
-                type="text"
-                register={register("charge")}
-              />
-             
+              <Input label="Séries" type="text" register={register("series")} />
+              <Input label="Carga" type="text" register={register("charge")} />
+
               <div className="button-div">
                 <button type="submit">Editar</button>
                 <button
                   className="button-modal"
                   type="button"
-                  onClick={() =>{ remove() , setModalEdit(false) }}
+                  onClick={() => {
+                    remove(), setModalEdit(false);
+                  }}
                 >
                   Remover
                 </button>

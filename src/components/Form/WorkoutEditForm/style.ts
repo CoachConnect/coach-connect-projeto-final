@@ -42,15 +42,15 @@ div {
 `;
 
 export const EditForm = styled.form`
-
 padding: 10px;
 display: flex;
 flex-direction: column;
+align-items: center;
 
 .button-div{
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 0px 10px;
 
   button{
     background: var(--colorPrimary);
