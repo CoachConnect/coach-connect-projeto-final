@@ -48,7 +48,7 @@ export const StyledUserPage = styled.div`
         margin-top: 5rem;
         display: flex;
         flex-wrap:wrap;
-        justify-content: space-between;
+        gap: 5rem;
     }
 
     li{
@@ -57,6 +57,7 @@ export const StyledUserPage = styled.div`
         align-items: center;
         gap: 0.5rem;
         margin-bottom: 2rem;
+        cursor: pointer;
     }
 
     .div-circle{
@@ -68,6 +69,21 @@ export const StyledUserPage = styled.div`
         justify-content: center;
         background-color: var(--colorPrimary);
         color: white;
+    }
+
+    @media(max-width: 769px){
+
+        ul{
+            margin-top: 1rem;
+            flex-wrap: unset;
+            overflow-x: auto;
+            gap: 4rem;
+        }
+
+        .div-circle{
+            width: 30px;
+            height: 30px;
+        }
     }
 
 `

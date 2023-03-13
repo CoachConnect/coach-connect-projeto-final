@@ -1,25 +1,18 @@
-import { useContext, useState } from "react"
-import { AdminContext } from "../../context/AdminContext"
+import { useContext } from "react"
 import { RegisterAndLoginContext } from "../../context/RegisterAndLoginContext"
 
 import { StyledTrainingModal, StyledUserPage } from "./styles"
 
 import { UserContext } from "../../context/UserContext"
 import { EditProfileForm } from "../../components/Form/EditProfileForm"
+import { UserWorkouts } from "../../components/UserWorkouts"
 
 
 
 const UserPage = () => {
 
-    const {user, userLogout} = useContext(RegisterAndLoginContext)
-
-    const [ openModal, setOpenModal] = useState(false)
-    const { training, trainings} = useContext(AdminContext)
-
-
-    const {newUser} = useContext(UserContext)
-    const {setEditProfile} = useContext(UserContext)
-
+    const { userLogout} = useContext(RegisterAndLoginContext)
+    const {newUser, setEditProfile, workouts, viewContent, setViewContent} = useContext(UserContext)
 
     return(
         <StyledUserPage>
@@ -31,7 +24,7 @@ const UserPage = () => {
             <main className="container">
                 <div className="div-user">
                     <div className="div-user-info">
-                        <div className="div-img"><img/></div>
+                        <div className="div-img"><img src={newUser?.photo}/></div>
                         <p>{newUser?.name}</p>
                         <p>{newUser?.email}</p>
                     </div>
@@ -41,42 +34,27 @@ const UserPage = () => {
                     <EditProfileForm/>
                 </section>
                 <ul>
-                    <li onClick={() => setOpenModal(true)}>
-                        <div className="div-circle">A</div>
-                        <p>Treino A</p>
-                        <p>Grupo muscular:Costas e biceps</p>
-                    </li>
-                    <li>
-                        <div className="div-circle">A</div>
-                        <p>Treino A</p>
-                        <p>Grupo muscular:Costas e biceps</p>
-                    </li>
-                    <li>
-                        <div className="div-circle">A</div>
-                        <p>Treino A</p>
-                        <p>Grupo muscular:Costas e biceps</p>
-                    </li>
-                    <li>
-                        <div className="div-circle">A</div>
-                        <p>Treino A</p>
-                        <p>Grupo muscular:Costas e biceps</p>
-                    </li>
+                   {
+                    workouts && workouts.map((item)=>(
+                        <UserWorkouts key={item.id} item={item} />
+                    ))
+                   }
                    
                 </ul>
              
 
             </main>
-            {openModal && 
+            {viewContent && 
                 <StyledTrainingModal >
                     <div>
                     <header>
-                        <h1>Treino</h1>
-                        <button onClick={() => setOpenModal(false)}>X</button>
+                        <h1>{viewContent.workout_type}</h1>
+                        <button onClick={() => setViewContent(null)}>X</button>
                     </header>
                     <main>
                         <div> 
-                            <h1>A</h1> 
-                            <h3>Treino A</h3>
+                            <h1>{viewContent.workout}</h1> 
+                            <h3>{viewContent.charge}</h3>
                         </div>
                         <section>
 
