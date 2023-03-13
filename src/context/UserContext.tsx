@@ -8,11 +8,25 @@ import {
 } from "./RegisterAndLoginContext";
 import api from "../services/api";
 
+export interface IWorkout {
+  workout_type: string;
+  muscle_group: string;
+  workout: string;
+  series: string
+  repetitions: string
+  charge: string
+  id: number;
+}
+
+
 interface IUserContext {
   editProfile: boolean;
   setEditProfile: React.Dispatch<React.SetStateAction<boolean>>;
   updateProfile: (data: IEditProfile, userId: number) => Promise<void>;
   newUser: User | null;
+  workouts:IWorkout[];
+  viewContent:IWorkout | null;
+  setViewContent:React.Dispatch<React.SetStateAction<IWorkout | null>>;
 }
 
 export interface IEditProfile {
@@ -30,6 +44,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const [upUser, setUpUser] = useState(false);
   const [newUser, setNewUser] = useState<User | null>(null);
   const { user } = useContext(RegisterAndLoginContext);
+  const [workouts, setWorkouts] = useState<IWorkout[]>([])
+  const [ viewContent, setViewContent] = useState<IWorkout | null >(null)
 
   const getUser = async (userId: number) => {
     try {
@@ -55,6 +71,26 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
+  useEffect(()=>{
+    async function loadWorkouts() {
+      try {
+        const token = localStorage.getItem('@token')
+        if(token){
+          const response = await api.get('/workouts',{
+            headers:{
+              Authorization:`Bearer ${token}`
+            }
+          })
+          setWorkouts(response.data)
+        }
+        
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    loadWorkouts()
+  },[])
+
   return (
     <UserContext.Provider
       value={{
@@ -62,6 +98,9 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         editProfile,
         updateProfile,
         newUser,
+        workouts,
+        setViewContent,
+        viewContent
       }}
     >
       {children}
