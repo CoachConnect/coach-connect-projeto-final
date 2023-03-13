@@ -16,7 +16,7 @@ const onSubmitEditProfile: SubmitHandler<IEditProfile> = (data, ) => {
   reset()
 }
 
-console.log(user)
+
 
   return (
     <>

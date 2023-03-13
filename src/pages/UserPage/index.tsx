@@ -16,10 +16,6 @@ const UserPage = () => {
     const [ openModal, setOpenModal] = useState(false)
     const { training, trainings} = useContext(AdminContext)
 
-    //ta errado puxar do contexto do admin o estado que armazena os treinos, existe uma rota na api que faz esse get e o user comum é autorizado
-    
-    console.log(training)
-    console.log(trainings)
 
     const {newUser} = useContext(UserContext)
     const {setEditProfile} = useContext(UserContext)
