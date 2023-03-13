@@ -71,6 +71,13 @@ export const StyledUserPage = styled.div`
         color: white;
     }
 
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+
+
     @media(max-width: 769px){
 
         ul{
@@ -101,7 +108,12 @@ export const StyledUserPage = styled.div`
         align-items: center;
 
         div{
-            background-color: var(--colorGrey100)
-
+            background-color: var(--colorGrey100);
+            padding: 2rem;
         }
+
+        span{
+            color: var(--colorPrimary);
+        }
+
     `

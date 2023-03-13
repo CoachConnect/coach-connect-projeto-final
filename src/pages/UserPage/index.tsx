@@ -48,13 +48,13 @@ const UserPage = () => {
                 <StyledTrainingModal >
                     <div>
                     <header>
-                        <h1>{viewContent.workout_type}</h1>
+                        <h1>Treino {viewContent.workout_type}</h1>
                         <button onClick={() => setViewContent(null)}>X</button>
                     </header>
                     <main>
                         <div> 
-                            <h1>{viewContent.workout}</h1> 
-                            <h3>{viewContent.charge}</h3>
+                            <h1>Nome do exercicio:<span>{viewContent.workout}</span></h1> 
+                            <h3>Carga: <span>{viewContent.charge} Kg</span></h3>
                         </div>
                         <section>
 
