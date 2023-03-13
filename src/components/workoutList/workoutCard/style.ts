@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const WorkoutItem = styled.li`
+export const StyledWorkoutItem = styled.li`
   background: #ffff;
   border-radius: 8px;
   width: 90%;

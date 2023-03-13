@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const WorkoutList = styled.ul`
+export const StyledWorkoutList = styled.ul`
   min-height: 150px;
   border: 1px solid #046b0f;
   border-radius: 8px;

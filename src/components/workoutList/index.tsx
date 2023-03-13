@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AdminContext } from "../../context/AdminContext";
-import { WorkoutList } from "./style";
-import { WorkoutCard }  from "./WorkoutCard";
+import { StyledWorkoutList } from "./style";
+import { WorkoutCard } from "./workoutCard";
 
 
 
@@ -10,7 +10,7 @@ export const WorkoutsList = () => {
 
   return (
     <>
-      <WorkoutList>
+      <StyledWorkoutList>
         {workoutList.length > 0 ? (
           <WorkoutCard  />
         ) : (
@@ -18,7 +18,7 @@ export const WorkoutsList = () => {
             Você ainda não possue treinos cadastrados!
           </span>
         )}
-      </WorkoutList>
+      </StyledWorkoutList>
     </>
   );
 };
