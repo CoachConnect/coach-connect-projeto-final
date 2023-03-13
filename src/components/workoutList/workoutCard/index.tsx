@@ -11,7 +11,7 @@ export const WorkoutCard = () => {
           <h3>{workout.workout_type}</h3>
             <div className="contentWorkout">
               <span>{workout.muscle_group} </span>
-              <span className="quantities">{workout.series} X {workout.repetitions} - {workout.charge}</span>
+              <span className="quantities">{workout.series} X {workout.repetitions} - {workout.charge}kg</span>
             </div>
           <button onClick={()=> {setModalEdit(true), setTraining(workout)}}>+</button>
         </WorkoutItem>
